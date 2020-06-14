@@ -13,6 +13,7 @@ Kotlin
 MVVM  
 Model - View - ViewModel   
 Repository - DataSource   
+![arcithecture](https://github.com/jess-jang/Movies/blob/master/arcithecture.png)
 
 ## JetPack
 AndroidX, AAC ViewModel, DataBinding, Lifecycle, LiveData, ListAdapter
