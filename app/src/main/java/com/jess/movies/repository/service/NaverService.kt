@@ -1,0 +1,24 @@
+package com.jess.movies.repository.service
+
+import com.jess.movies.data.MovieData
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+/**
+ * @author jess
+ * @since 2020.06.12
+ */
+interface NaverService {
+
+    /**
+     * 영화 조회
+     */
+    @GET("/v1/search/movie.json")
+    suspend fun getMovies(
+        @Query("query") query: String?,
+        @Query("start") start: Int = 1,
+        @Query("display") display: Int = 10
+    ): Response<MovieData>
+
+}
