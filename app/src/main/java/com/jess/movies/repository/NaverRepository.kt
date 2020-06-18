@@ -3,6 +3,7 @@ package com.jess.movies.repository
 import com.jess.movies.data.MovieData
 import com.jess.movies.repository.service.NaverService
 import retrofit2.Response
+import javax.inject.Inject
 
 /**
  * @author jess
@@ -12,7 +13,7 @@ interface NaverRepository {
     suspend fun getMovie(query: String?, start: Int): Response<MovieData>
 }
 
-class NaverRepositoryImpl constructor(
+class NaverRepositoryImpl @Inject constructor(
     private val service: NaverService
 ) : NaverRepository {
 
