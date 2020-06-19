@@ -7,7 +7,7 @@ package com.jess.movies.common.constant
  * @since 2020.03.122020.06.19
  */
 object NetworkConfig {
-    const val naverUrl = "https://openapi.naver.com"
-    const val naverClientId: String = "ZWBj44AXXZBhGsMarS_d"
-    const val naverClientSecret = "vUUpGBQpS2"
+    const val NAVER_RUL = "https://openapi.naver.com"
+    const val NAVER_CLIENT_ID: String = "ZWBj44AXXZBhGsMarS_d"
+    const val NAVER_CLIENT_SECRET = "vUUpGBQpS2"
 }

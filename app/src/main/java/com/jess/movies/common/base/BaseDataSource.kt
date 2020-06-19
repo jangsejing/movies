@@ -1,10 +1,12 @@
 package com.jess.movies.common.base
 
-import com.jess.movies.di.DispatcherProvider
+import androidx.lifecycle.LiveData
+import com.jess.movies.di.provider.DispatcherProvider
 import kotlinx.coroutines.cancel
 
-abstract interface BaseDataSource {
+interface BaseDataSource {
 
+    val isRequest: LiveData<Boolean>
     val dispatcher: DispatcherProvider
 
     fun onCleared() {

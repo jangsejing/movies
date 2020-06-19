@@ -16,14 +16,19 @@ class MainViewModel @Inject constructor(
 ) : BaseViewModel(dataSource) {
 
     val moveItems = dataSource.movieItems
-    val diffCallback = dataSource.diffCallback
+    val isClear = dataSource.isClear
+
+    override fun onCleared() {
+        dataSource.onCleared()
+        super.onCleared()
+    }
 
     /**
      * 영화 검색
      */
     fun getMovie(query: String?) {
         viewModelScope.launch {
-            delay(300)
+            delay(500)
             dataSource.getMovieData(query)
         }
     }
@@ -31,7 +36,7 @@ class MainViewModel @Inject constructor(
     /**
      * 영화 다음 페이지 검색
      */
-    fun onNextPage() {
+    fun getNextPage() {
         viewModelScope.launch {
             dataSource.getNextPage()
         }

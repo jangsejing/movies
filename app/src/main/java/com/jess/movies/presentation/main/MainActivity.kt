@@ -2,16 +2,17 @@ package com.jess.movies.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.jess.movies.R
 import com.jess.movies.common.base.BaseActivity
-import com.jess.movies.common.base.BaseListAdapter
+import com.jess.movies.common.base.BaseRecyclerViewAdapter
+import com.jess.movies.common.util.DeviceUtils
 import com.jess.movies.data.MovieData
 import com.jess.movies.databinding.MainActivityBinding
+import com.jess.movies.databinding.MainItemBinding
 import com.jess.movies.presentation.detail.DetailActivity
 import com.jess.movies.presentation.detail.DetailActivity.Companion.EXTRA_MOVIE_DATA
 import kotlinx.android.synthetic.main.main_activity.*
-import kotlinx.android.synthetic.main.search_view.*
 
 /**
  * @author jess
@@ -26,9 +27,8 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
     override fun initLayout() {
         rv_movie.run {
 
-            adapter = object : BaseListAdapter<MovieData.Item>(
-                R.layout.main_item,
-                viewModel.diffCallback
+            adapter = object : BaseRecyclerViewAdapter<MovieData.Item, MainItemBinding>(
+                R.layout.main_item
             ) {
 
             }.apply {
@@ -41,35 +41,35 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
             }
 
             setOnPagingListener {
-                viewModel.onNextPage()
+                viewModel.getNextPage()
             }
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(
+                    view: RecyclerView,
+                    newState: Int
+                ) {
+                    super.onScrollStateChanged(view, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                        DeviceUtils.hideKeyboard(view)
+                    }
+                }
+            })
         }
 
         // 텍스트 리턴
         cv_search.seOnTextListener {
             viewModel.getMovie(it)
         }
-
-        et_search.setText("마블")
-
     }
 
     override fun onCreated(savedInstanceState: Bundle?) {
 
     }
 
-    override fun initDataBinding() {
-        super.initDataBinding()
-        viewModel.run {
-            moveItems.observe(this@MainActivity, Observer {
-                val adapter = rv_movie.adapter as BaseListAdapter<MovieData.Item>
-                adapter.submitList(it)
-            })
-        }
-    }
-
     override fun onResume() {
         super.onResume()
+        cv_search.onResume()
     }
 
     override fun onPause() {

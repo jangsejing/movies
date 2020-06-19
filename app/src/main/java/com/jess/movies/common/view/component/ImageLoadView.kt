@@ -32,7 +32,6 @@ class ImageLoadView @JvmOverloads constructor(
 
     @SuppressLint("CheckResult")
     fun load(url: String) {
-        Timber.d(">> load $url")
         Glide.with(iv_succeed)
             .load(url)
             .transition(DrawableTransitionOptions.withCrossFade())
@@ -46,7 +45,7 @@ class ImageLoadView @JvmOverloads constructor(
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    Timber.d(">> onResourceReady $url")
+//                    Timber.d(">> onResourceReady $url")
                     return false
                 }
 
