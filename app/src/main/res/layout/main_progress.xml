@@ -10,7 +10,7 @@
 
         <variable
             name="vm"
-            type="com.jess.kakaopay.presentation.main.MainViewModel" />
+            type="com.jess.movies.presentation.main.MainViewModel" />
 
     </data>
 

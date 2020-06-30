@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.jess.kakaopay.presentation.main.MainViewModel" />
+            type="com.jess.movies.presentation.main.MainViewModel" />
 
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.jess.kakaopay.common.view.component.SearchView
+            <com.jess.movies.common.view.component.SearchView
                 android:id="@+id/cv_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 layout="@layout/main_progress"
                 bind:vm="@{vm}" />
 
-            <com.jess.kakaopay.common.view.PagingRecyclerView
+            <com.jess.movies.common.view.PagingRecyclerView
                 android:id="@+id/rv_movie"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

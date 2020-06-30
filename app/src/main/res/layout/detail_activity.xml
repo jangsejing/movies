@@ -12,7 +12,7 @@
 
         <variable
             name="vm"
-            type="com.jess.kakaopay.presentation.detail.DetailViewModel" />
+            type="com.jess.movies.presentation.detail.DetailViewModel" />
 
     </data>
 
@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/ic_movie"
             app:tint="@color/grey600" />
 
-        <com.jess.kakaopay.common.view.component.ImageLoadView
+        <com.jess.movies.common.view.component.ImageLoadView
             android:id="@+id/iv_thumbnail"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -95,7 +95,7 @@
                 tools:text="2019" />
 
             <!-- 평점 -->
-            <com.jess.kakaopay.common.view.component.RatingCountView
+            <com.jess.movies.common.view.component.RatingCountView
                 android:id="@+id/cv_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                 bind:rating="@{vm.item.userRating}" />
 
             <!-- 감독 -->
-            <com.jess.kakaopay.common.view.component.RolePartitionView
+            <com.jess.movies.common.view.component.RolePartitionView
                 android:id="@+id/cv_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                 tools:visibility="visible" />
 
             <!-- 배우 -->
-            <com.jess.kakaopay.common.view.component.RolePartitionView
+            <com.jess.movies.common.view.component.RolePartitionView
                 android:id="@+id/cv_actor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
