@@ -26,22 +26,28 @@ class LiveDataSourceImpl @Inject constructor(
 
     private val query = MutableLiveData<String>()
     override val result: LiveData<String> get() = query
-    var job: Job? = null
 
     override suspend fun start() {
-        job = CoroutineScope(dispatcher.default()).safeScope().launch {
+        val jon = CoroutineScope(dispatcher.default()).safeScope().launch {
             var i = 0
-            while (i < 1000) {
+            while (i < 1000 && isActive) {
                 delay(500)
-                val value = "value : ${i++}"
+                val value = "$isActive value : ${i++}"
                 query.postValue(value)
                 Timber.d(value)
             }
         }
-    }
+        Timber.d(jon.toString())
 
-    override fun onCleared() {
-//        super.onCleared()
-        job?.cancel()
+        val jon2 = CoroutineScope(dispatcher.default()).launch {
+            var i = 0
+            while (i < 1000 && isActive) {
+                delay(500)
+                val value = "$isActive value : ${i++}"
+                query.postValue(value)
+                Timber.d(value)
+            }
+        }
+        Timber.d(jon2.toString())
     }
 }

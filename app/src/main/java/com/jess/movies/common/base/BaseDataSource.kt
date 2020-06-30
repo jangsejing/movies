@@ -3,6 +3,7 @@ package com.jess.movies.common.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jess.movies.di.provider.DispatcherProvider
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 
 interface BaseDataSource {
@@ -11,11 +12,7 @@ interface BaseDataSource {
     val dispatcher: DispatcherProvider
 
     fun onCleared() {
-        dispatcher.run {
-            io().cancel()
-            main().cancel()
-            default().cancel()
-        }
+        dispatcher.job.cancel()
     }
 }
 
