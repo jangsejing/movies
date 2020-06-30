@@ -2,7 +2,7 @@ package com.jess.movies.di.module
 
 import com.jess.movies.BuildConfig
 import com.jess.movies.common.constant.NetworkConfig
-import com.jess.movies.repository.service.NaverService
+import com.jess.movies.domain.repository.service.NaverService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor

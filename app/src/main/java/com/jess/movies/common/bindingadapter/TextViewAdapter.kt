@@ -16,9 +16,9 @@ import com.jess.movies.common.extension.replaceText
  */
 @BindingAdapter("original", "start", "end", "color")
 fun TextView.accentTextColor(
-    original: String,
-    start: String,
-    end: String,
+    original: String?,
+    start: String?,
+    end: String?,
     @ColorInt color: Int
 ) {
     this.accentTextColor(original, start, end, color)
@@ -29,9 +29,9 @@ fun TextView.accentTextColor(
  */
 @BindingAdapter("original", "oldValue", "newValue")
 fun TextView.replaceText(
-    original: String,
-    oldValue: String,
-    newValue: String
+    original: String?,
+    oldValue: String?,
+    newValue: String?
 ) {
     this.replaceText(original, oldValue, newValue)
 }

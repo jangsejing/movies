@@ -1,6 +1,7 @@
 package com.jess.movies.common.base
 
 import androidx.lifecycle.ViewModel
+import timber.log.Timber
 
 /**
  * @author jess
@@ -12,6 +13,7 @@ abstract class BaseViewModel : ViewModel() {
     val onProgress by lazy { baseDataSource?.isRequest }
 
     override fun onCleared() {
+        Timber.d("onCleared()")
         baseDataSource?.onCleared()
         super.onCleared()
     }

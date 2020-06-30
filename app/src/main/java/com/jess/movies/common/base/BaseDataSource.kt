@@ -14,6 +14,7 @@ interface BaseDataSource {
         dispatcher.run {
             io().cancel()
             main().cancel()
+            default().cancel()
         }
     }
 }

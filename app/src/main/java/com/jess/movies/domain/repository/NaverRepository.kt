@@ -1,7 +1,7 @@
-package com.jess.movies.repository
+package com.jess.movies.domain.repository
 
 import com.jess.movies.data.MovieData
-import com.jess.movies.repository.service.NaverService
+import com.jess.movies.domain.repository.service.NaverService
 import retrofit2.Response
 import javax.inject.Inject
 

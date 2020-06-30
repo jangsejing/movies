@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.jess.movies.common.base.BaseDataSource
 import com.jess.movies.common.base.BaseViewModel
 import com.jess.movies.common.extension.safeScope
-import com.jess.movies.repository.datasource.MainDataSource
+import com.jess.movies.domain.datasource.MainDataSource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -17,11 +17,16 @@ import com.jess.movies.common.util.tryCatch
  * <b>, </b> 강조 텍스트 변환
  */
 fun TextView.accentTextColor(
-    original: String,
-    start: String,
-    end: String,
+    original: String?,
+    start: String?,
+    end: String?,
     @ColorInt color: Int
 ) {
+
+    if (original.isNullOrEmpty() || start.isNullOrEmpty() || end.isNullOrEmpty()) {
+        return
+    }
+
     tryCatch {
         val startIndex = original.indexOf(start)
         val endIndex = original.indexOf(end)
@@ -52,10 +57,15 @@ fun TextView.accentTextColor(
  * oldValue를 newValue로 변경
  */
 fun TextView.replaceText(
-    original: String,
-    oldValue: String,
-    newValue: String
+    original: String?,
+    oldValue: String?,
+    newValue: String?
 ) {
+
+    if (original.isNullOrEmpty() || oldValue.isNullOrEmpty() || newValue.isNullOrEmpty()) {
+        return
+    }
+
     tryCatch {
         var convert: String = original
         oldValue

@@ -12,6 +12,7 @@ import com.jess.movies.databinding.MainActivityBinding
 import com.jess.movies.databinding.MainItemBinding
 import com.jess.movies.presentation.detail.DetailActivity
 import com.jess.movies.presentation.detail.DetailActivity.Companion.EXTRA_MOVIE_DATA
+import com.jess.movies.presentation.live.LiveActivity
 import kotlinx.android.synthetic.main.main_activity.*
 
 /**
@@ -61,6 +62,8 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
         cv_search.seOnTextListener {
             viewModel.getMovie(it)
         }
+
+        startActivity(Intent(this, LiveActivity::class.java))
     }
 
     override fun onCreated(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.jess.movies.repository.datasource
+package com.jess.movies.domain.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import com.jess.movies.common.interfaces.OnResponseListener
 import com.jess.movies.common.manager.request
 import com.jess.movies.data.MovieData
 import com.jess.movies.di.provider.DispatcherProvider
-import com.jess.movies.repository.NaverRepository
+import com.jess.movies.domain.repository.NaverRepository
 import timber.log.Timber
 import javax.inject.Inject
 

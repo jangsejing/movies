@@ -1,7 +1,7 @@
 package com.jess.movies.di.module
 
-import com.jess.movies.repository.NaverRepository
-import com.jess.movies.repository.NaverRepositoryImpl
+import com.jess.movies.domain.repository.NaverRepository
+import com.jess.movies.domain.repository.NaverRepositoryImpl
 import dagger.Binds
 import dagger.Module
 

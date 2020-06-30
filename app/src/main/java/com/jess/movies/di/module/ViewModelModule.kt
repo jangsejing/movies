@@ -3,6 +3,7 @@ package com.jess.movies.di.module
 import androidx.lifecycle.ViewModel
 import com.jess.movies.di.annotaion.ViewModelKey
 import com.jess.movies.presentation.detail.DetailViewModel
+import com.jess.movies.presentation.live.LiveViewModel
 import com.jess.movies.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -24,6 +25,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun bindDetailViewModel(viewModel: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LiveViewModel::class)
+    abstract fun bindLiveViewModel(viewModel: LiveViewModel): ViewModel
 
 }
 

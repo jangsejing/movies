@@ -1,7 +1,7 @@
-package com.jess.movies.repository.service
+package com.jess.movies.domain.repository.service
 
 import com.jess.movies.data.MovieData
-import com.jess.movies.repository.NaverRepositoryImpl.Companion.DISPLAY_COUNT
+import com.jess.movies.domain.repository.NaverRepositoryImpl.Companion.DISPLAY_COUNT
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

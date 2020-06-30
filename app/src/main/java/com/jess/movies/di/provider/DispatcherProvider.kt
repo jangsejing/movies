@@ -11,9 +11,11 @@ import javax.inject.Inject
 interface DispatcherProvider {
     fun main(): CoroutineDispatcher
     fun io(): CoroutineDispatcher
+    fun default(): CoroutineDispatcher
 }
 
 class DispatcherProviderImpl @Inject constructor() : DispatcherProvider {
     override fun main(): CoroutineDispatcher = Dispatchers.Main
     override fun io(): CoroutineDispatcher = Dispatchers.IO
+    override fun default(): CoroutineDispatcher = Dispatchers.Default
 }
