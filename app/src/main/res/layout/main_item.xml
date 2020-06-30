@@ -8,9 +8,11 @@
 
         <import type="android.view.View" />
 
+        <import type="android.text.TextUtils" />
+
         <variable
             name="item"
-            type="com.jess.movies.data.MovieData.Item" />
+            type="com.jess.kakaopay.data.MovieData.Item" />
 
     </data>
 
@@ -20,7 +22,7 @@
         android:background="@color/colorPrimary"
         android:padding="12dp">
 
-        <com.jess.movies.common.view.component.ImageLoadView
+        <com.jess.kakaopay.common.view.component.ImageLoadView
             android:id="@+id/iv_thumbnail"
             android:layout_width="100dp"
             android:layout_height="0dp"
@@ -60,9 +62,13 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{item.subtitle}"
                 android:textColor="#ffffff"
                 android:textSize="14sp"
+                android:visibility="@{!TextUtils.isEmpty(item.subtitle) ? View.VISIBLE : View.GONE}"
+                bind:color="@{@color/colorAccent}"
+                bind:end='@{"&lt;/b>"}'
+                bind:original="@{item.subtitle}"
+                bind:start='@{"&lt;b>"}'
                 tools:text="Captain Marvel" />
 
             <!-- 제작년도 -->
@@ -72,10 +78,10 @@
                 android:text="@{item.pubDate}"
                 android:textColor="#ffffff"
                 android:textSize="14sp"
-                android:visibility="@{!item.pubDate.isEmpty() ? View.VISIBLE : View.GONE}"
+                android:visibility="@{!TextUtils.isEmpty(item.pubDate) ? View.VISIBLE : View.GONE}"
                 tools:text="2019" />
 
-            <com.jess.movies.common.view.component.RatingCountView
+            <com.jess.kakaopay.common.view.component.RatingCountView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
