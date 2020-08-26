@@ -1,23 +1,22 @@
 package com.jess.movies.domain.repository
 
-import com.jess.movies.data.MovieData
+import com.jess.movies.data.response.MovieResponse
 import com.jess.movies.domain.repository.service.NaverService
-import retrofit2.Response
 import javax.inject.Inject
 
 /**
  * @author jess
  * @since 2020.06.12
  */
-interface NaverRepository {
+interface NaverRepositoryV2 {
     val displayCount: Int
 
-    suspend fun getMovie(query: String?, start: Int = 1): Response<MovieData>
+    suspend fun getMovie(query: String?, start: Int = 1): MovieResponse
 }
 
-class NaverRepositoryImpl @Inject constructor(
+class NaverRepositoryImplV2 @Inject constructor(
     private val service: NaverService
-) : NaverRepository {
+) : NaverRepositoryV2 {
 
     companion object {
         const val DISPLAY_COUNT = 20
@@ -25,5 +24,5 @@ class NaverRepositoryImpl @Inject constructor(
 
     override val displayCount: Int get() = DISPLAY_COUNT
 
-    override suspend fun getMovie(query: String?, start: Int) = service.getMovies(query, start)
+    override suspend fun getMovie(query: String?, start: Int) = service.getMoviesV2(query, start)
 }
