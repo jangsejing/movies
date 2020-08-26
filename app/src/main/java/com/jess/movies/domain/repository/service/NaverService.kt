@@ -1,6 +1,7 @@
 package com.jess.movies.domain.repository.service
 
 import com.jess.movies.data.MovieData
+import com.jess.movies.data.response.MovieResponse
 import com.jess.movies.domain.repository.NaverRepositoryImpl.Companion.DISPLAY_COUNT
 import retrofit2.Response
 import retrofit2.http.GET
@@ -21,5 +22,15 @@ interface NaverService {
         @Query("start") start: Int = 1,
         @Query("display") display: Int = DISPLAY_COUNT
     ): Response<MovieData>
+
+    /**
+     * 영화 조회
+     */
+    @GET("/v1/search/movie.json")
+    suspend fun getMoviesV2(
+        @Query("query") query: String?,
+        @Query("start") start: Int = 1,
+        @Query("display") display: Int = DISPLAY_COUNT
+    ): MovieResponse
 
 }

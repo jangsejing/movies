@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jess.movies.R
 import com.jess.movies.common.base.BaseActivity
 import com.jess.movies.common.base.BaseRecyclerViewAdapter
+import com.jess.movies.common.extension.createActivityViewModel
 import com.jess.movies.common.util.DeviceUtils
 import com.jess.movies.data.MovieData
 import com.jess.movies.databinding.MainActivityBinding
@@ -24,6 +25,11 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
     override val layoutRes = R.layout.main_activity
 
     override val viewModelClass = MainViewModel::class.java
+
+    // AAC ViewModel
+    private val viewModel2 by lazy(LazyThreadSafetyMode.NONE) {
+        createActivityViewModel(viewModelFactory, MainViewModelV2::class.java)
+    }
 
     override fun initLayout() {
         rv_movie.run {
@@ -61,9 +67,10 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
         // 텍스트 리턴
         cv_search.seOnTextListener {
             viewModel.getMovie(it)
+            viewModel2.getMovie(it)
         }
 
-        startActivity(Intent(this, LiveActivity::class.java))
+//        startActivity(Intent(this, LiveActivity::class.java))
     }
 
     override fun onCreated(savedInstanceState: Bundle?) {

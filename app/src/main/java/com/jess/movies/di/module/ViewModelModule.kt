@@ -5,6 +5,7 @@ import com.jess.movies.di.annotaion.ViewModelKey
 import com.jess.movies.presentation.detail.DetailViewModel
 import com.jess.movies.presentation.live.LiveViewModel
 import com.jess.movies.presentation.main.MainViewModel
+import com.jess.movies.presentation.main.MainViewModelV2
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,6 +21,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModelV2::class)
+    abstract fun bindMainViewModel2(viewModel: MainViewModelV2): ViewModel
 
     @Binds
     @IntoMap
