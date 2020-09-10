@@ -11,6 +11,7 @@ import com.jess.movies.common.manager.request
 import com.jess.movies.data.MovieData
 import com.jess.movies.di.provider.DispatcherProvider
 import com.jess.movies.domain.repository.NaverRepository
+import com.jess.movies.presentation.main.adapter.MainItem
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -24,6 +25,7 @@ interface MainDataSource : BaseDataSource {
     var isMorePage: Boolean
     var startPage: Int
     val movieItems: LiveData<List<MovieData.Item>>
+    val list: LiveData<List<MainItem>>
     val isClear: LiveData<Boolean>
     val queryData: MutableLiveData<String>
 
@@ -55,6 +57,9 @@ class MainDataSourceImpl @Inject constructor(
             emitSource(requestMovie(queryString))
         }
     }
+
+    private val _list = MutableLiveData<List<MainItem>>()
+    override val list: LiveData<List<MainItem>> get() = _list
 
     /**
      * 영화 검색
@@ -100,7 +105,20 @@ class MainDataSourceImpl @Inject constructor(
                     response?.let {
                         isMorePage = it.isMorePage()
                         if (isMorePage) startPage = it.getStartNumber(repository.displayCount)
+
+                        val entities = arrayListOf<MainItem>()
+                        it.items?.forEachIndexed { index, item ->
+                            if (index % 2 == 0) {
+                                item.style = 0
+                                entities.add(MainItem.NormalItem(data = item))
+                            } else {
+                                item.style = 1
+                                entities.add(MainItem.NormalSub(data = item))
+                            }
+                        }
+
                         _movieItems.postValue(it.items)
+                        _list.postValue(entities)
                     }
                     _isRequest.postValue(false)
                 }

@@ -20,6 +20,7 @@ class MainViewModel @Inject constructor(
     override var baseDataSource: BaseDataSource? = dataSource
 
     val moveItems = dataSource.movieItems
+    val list = dataSource.list
     val isClear = dataSource.isClear
 
     /**

@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 /**
  * UseCase 사용
+ *
  * @author jess
  * @since 2020.08.26
  */
@@ -35,5 +36,9 @@ class MainViewModelV2 @Inject constructor(
                 Timber.d(this.toString())
             }
         }
+    }
+
+    fun getNextPage() {
+
     }
 }

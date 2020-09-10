@@ -18,7 +18,7 @@ abstract class BaseRecyclerViewAdapter<ITEM : Any, VD : ViewDataBinding>(
     @LayoutRes private val layoutId: Int = 0
 ) : RecyclerView.Adapter<BaseViewHolder<ITEM>>() {
 
-    private val list = mutableListOf<ITEM>()
+    val list = mutableListOf<ITEM>()
     private var itemClickListener: ((View, ITEM?) -> Unit)? = null
     private var isCircleRipple: Boolean = false
 
@@ -49,7 +49,7 @@ abstract class BaseRecyclerViewAdapter<ITEM : Any, VD : ViewDataBinding>(
     @Suppress("UNCHECKED_CAST")
     override fun onBindViewHolder(holder: BaseViewHolder<ITEM>, position: Int) {
         holder.onBind(list[position])
-        onBindData(position, list[position], holder.viewDataBinding as VD)
+//        onBindData(position, list[position], holder.viewDataBinding as VD)
     }
 
     override fun getItemCount(): Int {
@@ -94,13 +94,13 @@ abstract class BaseRecyclerViewAdapter<ITEM : Any, VD : ViewDataBinding>(
         this.isCircleRipple = isCircleRipple
     }
 
-    open fun createViewHolder(
+    fun createViewHolder(
         dataBinding: ViewDataBinding
     ): BaseViewHolder<ITEM> {
         return BaseViewHolder(dataBinding)
     }
 
-    open fun createViewDataBinding(parent: ViewGroup, layoutId: Int): ViewDataBinding {
+    fun createViewDataBinding(parent: ViewGroup, layoutId: Int): ViewDataBinding {
         return DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context),
             layoutId,

@@ -29,7 +29,6 @@
             android:name=".presentation.detail.DetailActivity"
             android:theme="@style/DetailTheme" />
 
-        <activity android:name=".presentation.live.LiveActivity" />
     </application>
 
 </manifest>

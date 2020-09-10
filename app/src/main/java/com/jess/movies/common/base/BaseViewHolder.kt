@@ -10,7 +10,7 @@ import com.jess.movies.common.util.tryCatch
  * @since 2020.06.12
  */
 open class BaseViewHolder<T : Any?>(
-    val viewDataBinding: ViewDataBinding
+    private val viewDataBinding: ViewDataBinding
 ) : RecyclerView.ViewHolder(viewDataBinding.root) {
 
     open fun onBind(item: T?) {

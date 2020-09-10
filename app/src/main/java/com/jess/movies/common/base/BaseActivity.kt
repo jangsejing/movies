@@ -30,7 +30,7 @@ abstract class BaseActivity<VD : ViewDataBinding, VM : BaseViewModel> : DaggerAp
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     // AAC ViewModel
-    protected val viewModel by lazy(LazyThreadSafetyMode.NONE) {
+    protected val vm by lazy(LazyThreadSafetyMode.NONE) {
         createActivityViewModel(viewModelFactory, viewModelClass)
     }
 
@@ -59,7 +59,7 @@ abstract class BaseActivity<VD : ViewDataBinding, VM : BaseViewModel> : DaggerAp
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.run {
             lifecycleOwner = this@BaseActivity
-            setVariable(BR.vm, viewModel)
+            setVariable(BR.vm, vm)
         }
     }
 }

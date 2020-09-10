@@ -35,12 +35,12 @@ class DetailActivity : BaseActivity<DetailActivityBinding, DetailViewModel>(),
     }
 
     override fun onCreated(savedInstanceState: Bundle?) {
-        viewModel.setData(movieData)
+        vm.setData(movieData)
     }
 
     override fun initDataBinding() {
         super.initDataBinding()
-        viewModel.detailUrl.observe(this, Observer {
+        vm.detailUrl.observe(this, Observer {
             val intent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse(it)
@@ -51,7 +51,7 @@ class DetailActivity : BaseActivity<DetailActivityBinding, DetailViewModel>(),
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.iv_info -> viewModel.moveDetailInfo()
+            R.id.iv_info -> vm.moveDetailInfo()
         }
     }
 }
