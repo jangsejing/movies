@@ -1,20 +1,15 @@
 package com.jess.movies.presentation.main
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.jess.movies.R
 import com.jess.movies.common.base.BaseActivity
-import com.jess.movies.common.base.BaseRecyclerViewAdapter
-import com.jess.movies.common.base.BaseViewHolder
+import com.jess.movies.common.extension.createActivityViewModel
 import com.jess.movies.common.util.DeviceUtils
-import com.jess.movies.data.MovieData
 import com.jess.movies.databinding.MainActivityBinding
-import com.jess.movies.databinding.MainItemBinding
-import com.jess.movies.presentation.detail.DetailActivity
-import com.jess.movies.presentation.detail.DetailActivity.Companion.EXTRA_MOVIE_DATA
+import com.jess.movies.domain.test.TestViewModel
 import com.jess.movies.presentation.main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -27,6 +22,13 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
     override val layoutRes = R.layout.main_activity
 
     override val viewModelClass = MainViewModel::class.java
+
+    // AAC ViewModel
+    private val viewModel2 by lazy(LazyThreadSafetyMode.NONE) {
+        createActivityViewModel(viewModelFactory, MainViewModelV2::class.java)
+    }
+
+    private val testViewModel: TestViewModel by viewModels { viewModelFactory }
 
     override fun initLayout() {
         rv_movie.run {
@@ -90,6 +92,8 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
             val adapter = rv_movie.adapter as MainAdapter
             adapter.submitList(it)
         })
+
+        testViewModel.log()
     }
 
     override fun onResume() {

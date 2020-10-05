@@ -2,6 +2,7 @@ package com.jess.movies.di.module
 
 import androidx.lifecycle.ViewModel
 import com.jess.movies.di.annotaion.ViewModelKey
+import com.jess.movies.domain.test.TestViewModel
 import com.jess.movies.presentation.detail.DetailViewModel
 import com.jess.movies.presentation.main.MainViewModel
 import com.jess.movies.presentation.main.MainViewModelV2
@@ -30,6 +31,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun bindDetailViewModel(viewModel: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TestViewModel::class)
+    abstract fun bindTestViewModel(viewModel: TestViewModel): ViewModel
 
 }
 

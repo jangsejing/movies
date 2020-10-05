@@ -2,6 +2,8 @@ package com.jess.movies.di
 
 import com.jess.movies.JessApplication
 import com.jess.movies.di.module.*
+import com.jess.movies.domain.test.ModuleTest1
+import com.jess.movies.domain.test.ModuleTestMain
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -20,7 +22,8 @@ import javax.inject.Singleton
         ActivityModule::class,
         DataSourceModule::class,
         RepositoryModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        ModuleTestMain::class
     ]
 )
 
