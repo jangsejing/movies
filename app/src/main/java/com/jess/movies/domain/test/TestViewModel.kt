@@ -15,7 +15,6 @@ class TestViewModel @Inject constructor(
 
     fun log() {
         Log.d("jess", "log TestViewModel")
-//        testRepository.log()
         testUseCase.log()
     }
 

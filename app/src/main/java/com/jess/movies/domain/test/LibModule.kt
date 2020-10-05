@@ -27,11 +27,13 @@ class LibModule {
 
     @Provides
     fun provideTestRepository(
+        testSingleton: TestSingleton,
         test1: Test1,
         test2: Test2,
         test3: Test3
     ): TestRepository {
         return TestRepository(
+            testSingleton,
             test1,
             test2,
             test3

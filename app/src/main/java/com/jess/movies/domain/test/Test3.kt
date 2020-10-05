@@ -5,7 +5,7 @@ import android.util.Log
 class Test3 {
 
     init {
-        Log.d("jess", "init - Test3")
+        Log.d("jess", "init Test3")
     }
 
 }
