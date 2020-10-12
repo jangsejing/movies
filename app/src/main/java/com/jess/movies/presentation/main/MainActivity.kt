@@ -61,7 +61,7 @@ class MainActivity : BaseActivity<MainActivityBinding, MainViewModel>() {
 //                }
 //            }
 
-            adapter = MainAdapter()
+            adapter = MainAdapter(vm)
 
             setOnPagingListener {
 //                vm.getNextPage()

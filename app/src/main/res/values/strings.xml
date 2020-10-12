@@ -7,4 +7,7 @@
     <string name="detail_director">감독</string>
     <string name="detail_actor">배우</string>
     <string name="detail_role">#%s</string>
+
+    <string name="main_rate">평점 %s</string>
+    <string name="main_test">test</string>
 </resources>

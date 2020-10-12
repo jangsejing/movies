@@ -1,6 +1,7 @@
 package com.jess.movies.presentation.main
 
 import androidx.lifecycle.viewModelScope
+import com.jess.movies.R
 import com.jess.movies.common.base.BaseDataSource
 import com.jess.movies.common.base.BaseViewModel
 import com.jess.movies.common.extension.safeScope
@@ -40,5 +41,13 @@ class MainViewModel @Inject constructor(
         viewModelScope.safeScope().launch {
             dataSource.getNextPage()
         }
+    }
+
+    fun getRate(rate: String?): String {
+        return rate ?: "1"
+    }
+
+    fun getTest(rate: String): Int {
+        return R.string.main_test
     }
 }

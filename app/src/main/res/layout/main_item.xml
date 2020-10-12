@@ -14,6 +14,10 @@
             name="item"
             type="com.jess.movies.data.MovieData.Item" />
 
+        <variable
+            name="vm"
+            type="com.jess.movies.presentation.main.MainViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,6 +90,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 bind:rating="@{item.userRating}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/main_rate(vm.getRate(item.userRating))}"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.getTest(item.userRating)}"
+                android:textColor="#ffffff" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

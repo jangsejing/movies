@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jess.movies.BR
 import com.jess.movies.R
+import com.jess.movies.presentation.main.MainViewModel
 
-class MainAdapter : ListAdapter<MainItem, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
+class MainAdapter(
+    private val vm: MainViewModel
+) : ListAdapter<MainItem, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun getItemViewType(position: Int): Int = getItem(position).type
 
@@ -23,7 +26,7 @@ class MainAdapter : ListAdapter<MainItem, MainAdapter.ViewHolder>(DIFF_CALLBACK)
             0 -> R.layout.main_item
             else -> R.layout.main_item_sub
         }
-        return ViewHolder(createViewDataBinding(parent, layoutId))
+        return ViewHolder(createViewDataBinding(parent, layoutId), vm)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -40,12 +43,14 @@ class MainAdapter : ListAdapter<MainItem, MainAdapter.ViewHolder>(DIFF_CALLBACK)
     }
 
     class ViewHolder(
-        private val viewDataBinding: ViewDataBinding
+        private val viewDataBinding: ViewDataBinding,
+        private val vm: MainViewModel
     ) : RecyclerView.ViewHolder(viewDataBinding.root) {
 
         fun bind(item: MainItem) {
             viewDataBinding.run {
                 setVariable(BR.item, item.data)
+                setVariable(BR.vm, vm)
                 viewDataBinding.executePendingBindings()
             }
         }
